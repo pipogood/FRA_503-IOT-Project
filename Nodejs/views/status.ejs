@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status</title>
+</head>
+<body>
+    <h1>Check your progress image drawing status</h1>
+    <p>Finish in 100000 years</p>
+    <video id="video" width="400" height="300" autoplay></video>
+    <script>
+        (function(){
+            var video = document.getElementById('video');
+            var vendorUrl = window.URL || window.webkitURL;
+
+            navigator.getMedia = navigator.getUserMedia ||
+                                navigator.webkitGetUserMedia ||
+                                navigator.mozGetUserMedia ||
+                                navigator.msGetUserMedia;
+            // capture video
+            navigator.getMedia({
+                video: true,
+                audio: false
+            }, function(stream){
+                console.log(stream);
+                video.srcObject = stream; // Updated to use srcObject
+                video.play();
+            }, function(error){
+                console.log(error);
+            });
+        })();
+    </script>
+    <hr>
+    <a href="/upload">Back to upload page</a>
+</body>
+</html>

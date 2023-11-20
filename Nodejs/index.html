@@ -1,23 +1,38 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
-  <meta charset="utf-8">
-  <base target="_blank">
-
-  <title>getUserMedia to canvas</title>
-
-
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
 </head>
-
 <body>
+    <div class="booth">
+        <video id="video" width="400" height="300" autoplay></video>
+        <canvas id="canvas" width="400" height="300"></canvas>
+    </div>
+    
+    <script>
+        (function(){
+            var video = document.getElementById('video');
+            var vendorUrl = window.URL || window.webkitURL;
 
-    <video autoplay></video> <br>
-    <button>Take snapshot</button>
-    <canvas></canvas>
+            navigator.getMedia = navigator.getUserMedia ||
+                                navigator.webkitGetUserMedia ||
+                                navigator.mozGetUserMedia ||
+                                navigator.msGetUserMedia;
 
-  <script src="./webRTC.js"></script>
-
+            // capture video
+            navigator.getMedia({
+                video: true,
+                audio: false
+            }, function(stream){
+                console.log(stream);
+                video.srcObject = stream; // Updated to use srcObject
+                video.play();
+            }, function(error){
+                console.log(error);
+            });
+        })();
+    </script>
 </body>
 </html>
