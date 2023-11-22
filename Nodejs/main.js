@@ -51,6 +51,7 @@ app.post('/upload_process', upload.single('file'), (req, res) => {
         var count = 0
         process.stdout.on('data',function(data){
             count = count + 1
+            console.log(count, data.toString())
             if (count === 5){
             res.redirect('/ejs')}
         })

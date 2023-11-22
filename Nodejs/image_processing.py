@@ -14,6 +14,8 @@ from matplotlib import pyplot
 from numpy.random import randint
 import numpy as np
 import sys
+from yoloface import face_analysis
+face=face_analysis() 
 print("Python RUN!!!!!")
 
 ###########Step 1 Face detection and resize###############
@@ -21,19 +23,10 @@ print("Python RUN!!!!!")
 path = 'C:\\git\\FRA_503-IOT\\Nodejs\\uploads\\'
 list_dir = listdir(path)
 
-img = cv2.imread(path + list_dir[len(list_dir)-1])
+img,box,conf=face.face_detection(image_path= path + list_dir[len(list_dir)-1] ,model='tiny')
 
-# Convert into grayscale 
-gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-
-# Load the cascade 
-face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_alt2.xml')  
-
-# Detect faces 
-faces = face_cascade.detectMultiScale(gray, 1.1, 4) 
-# Draw rectangle around the faces and crop the faces 
-for (x, y, w, h) in faces: 
-    faces = img[y-100:y + h +20, x-20:x + w +20] 
+for (x, y, w, h) in box: 
+    faces = img[y:y + w, x- 30:x + h + 30]
 
 resized_image = cv2.resize(faces, (256, 256))
 cv2.imwrite('C:\\git\\FRA_503-IOT\\Nodejs\\Processed_image\\step1.png', resized_image) 
