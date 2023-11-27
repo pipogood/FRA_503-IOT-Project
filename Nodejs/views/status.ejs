@@ -4,34 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Status</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="try.css" />
 </head>
 <body>
-    <h1>Check your progress image drawing status</h1>
-    <p>Name .... Status : .....</p>
-    <video id="video" width="400" height="300" autoplay></video>
-    <script>
-        (function(){
-            var video = document.getElementById('video');
-            var vendorUrl = window.URL || window.webkitURL;
+    <div class="header">
+        <div class="logo">
+          <div class="header__back">
+            <i class="fas fa-angle-left"></i>
+          </div>
+          <h2>Ckecking Progress Step</h2>
+        </div>
+      </div> 
+    <div class="guideline-steps">
+        <p class="step">Check drawing queue name and real-time drawing streaming</p>
+        <hr>
+        <p></p>
+        <b>Current Drawing Queue</b>
+        <% var userIndex = user_done; %>
+        <p>NOW!! Drawing picture of : <%= all_users[userIndex] %> <a href="/stream_all" class="stream-button" target="_blank">Go to video streaming page</a></p>
+        <hr>
+        <p></p>
+        <b>Waiting Queue</b>
+            <% for (var i = user_done; i < all_users.length; i++) { %>
+                <li><%= all_users[i+1] %></li>
+            <% } %>
+        </ul>
+    </div>
+    <a href="/upload">Back to Upload</a>
 
-            navigator.getMedia = navigator.getUserMedia ||
-                                navigator.webkitGetUserMedia ||
-                                navigator.mozGetUserMedia ||
-                                navigator.msGetUserMedia;
-            // capture video
-            navigator.getMedia({
-                video: true,
-                audio: false
-            }, function(stream){
-                console.log(stream);
-                video.srcObject = stream; // Updated to use srcObject
-                video.play();
-            }, function(error){
-                console.log(error);
-            });
-        })();
-    </script>
-    <hr>
-    <a href="/upload">Back to upload page</a>
 </body>
 </html>

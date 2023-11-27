@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+:root {
+  --main-darklg: #1d2635;
+  --main-dark: #161d29;
+  --primary-color: #2f80ec;
+  --main-light: #eeeeee;
+  font-family: "Poppins", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 8vh;
+  position: relative;
+  width: 100%;
+  background-color: var(--main-darklg);
+}
+
+.logo > h2 {
+  color: var(--main-light);
+}
+
+.header__back {
+    display: none;
+    position: absolute;
+    font-size: 1.3rem;
+    top: 17px;
+    left: 28px;
+    color: #fff;
+  }
+  
+  p {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  b {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  a {
+    display: block;
+    width: 150px;
+    padding: 10px;
+    margin: 20px auto;
+    text-align: center;
+    text-decoration: none;
+    background-color: #4CAF50;
+    color: #fff;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  a:hover {
+    background-color: #45a049;
+  }
+
+.guideline-button {
+    display: block;
+    width: 150px;
+    padding: 10px;
+    margin: 30px auto;;
+    text-align: center;
+    text-decoration: none;
+    background-color: #000000; /* Green color */
+    color: #fff;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.guideline-button:hover {
+    background-color: #5c5b5b;
+}
+
+.status-button {
+    display: block;
+    width: 150px;
+    padding: 10px;
+    margin: 20px auto;;
+    text-align: center;
+    text-decoration: none;
+    background-color: #3498db; /* Blue color */
+    color: #fff;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.status-button:hover {
+    background-color: #2980b9;
+}
+
+.stream-button {
+    display: block;
+    width: 150px;
+    padding: 10px;
+    margin: 20px auto;;
+    text-align: center;
+    text-decoration: none;
+    background-color: #db3482; /* Blue color */
+    color: #fff;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.stream-button:hover {
+    background-color: #b85885;
+}
+
+.upload-button {
+    display: block;
+    width: 150px;
+    padding: 10px;
+    margin: 20px auto;;
+    text-align: center;
+    text-decoration: none;
+    background-color: #db3434; /* Blue color */
+    color: #fff;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.upload-button:hover {
+    background-color: #b85858;
+}
+
+  
+  .guideline-steps {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .guideline-steps input[type="text"],
+.guideline-steps input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.guideline-steps input[type="text"]:focus,
+.guideline-steps input[type="file"]:focus {
+    border-color: #4CAF50;
+}
+
+.guideline-steps input[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.guideline-steps input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+  
+  .step {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }

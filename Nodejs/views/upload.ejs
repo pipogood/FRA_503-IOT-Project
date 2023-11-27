@@ -4,20 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Upload</title>
+    <link rel="stylesheet" href="try.css" />
 </head>
-<body>
-    <h1>File Upload</h1>
-    <form action="/upload_process" method="post" enctype="multipart/form-data">
-        <p>Please input your name in English (not exceed than 8)</p>
-        <input type="text" name="Your Nickanme" maxlength="8" pattern="[A-Za-z ]+" required>
-        <hr>
-        <p>Please your portrait image (jpeg. or png only)</p>
-        <input type="file" name="file" accept="image/jpeg, image/png" required>
-        <input type="submit" value="Upload">
-        <hr>
 
-    </form>
-    <a href="/">Back to Guildline</a>
-    <a href="/status">Check Status</a>
+<body>
+    <div class="header">
+        <div class="logo">
+          <div class="header__back">
+            <i class="fas fa-angle-left"></i>
+          </div>
+          <h2>File Upload Step</h2>
+        </div>
+      </div>  
+
+    <div class="guideline-steps">
+        <p class="step">Upload image and enter your name here</p>
+        <form action="/upload_process" method="post" enctype="multipart/form-data">
+            <p>Please input your name in English (not exceed than 8)</p>
+            <input type="text" name="Your Nickname" maxlength="8" pattern="[A-Za-z ]+" required>
+            <hr>
+            <p></p>
+            <p>Please import your portrait image (jpeg. or png only)</p>
+            <input type="file" name="file" accept="image/jpeg, image/png" required>
+            <input type="submit" value="Upload">
+            <hr>
+        </form>
+    </div>
+
+    <a href="/" class="guideline-button">Back to Guildline</a>
+    <a href="/status" class="status-button">Check Status</a>
 </body>
 </html>

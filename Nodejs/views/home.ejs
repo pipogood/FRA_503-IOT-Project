@@ -4,14 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>First Page</title>
+    <link rel="stylesheet" href="try.css" />
 </head>
-<body>
-    <h1>Tele Portrial Drawing robot</h1>
-    <p>Guildline Step</p>
-    <p>1.</p>
-    <p>2.</p>
-    <p>3.</p>
-    <p>4.</p>
+<body>    
+    <script>
+        var enteredPassword = window.prompt('Enter Password');
+        if (enteredPassword !== '1212312121') {
+            enteredPassword = window.prompt('Retry again');
+        }
+    </script>
+    
+    <div class="header">
+        <div class="logo">
+          <div class="header__back">
+            <i class="fas fa-angle-left"></i>
+          </div>
+          <h2>Tele Portrial Drawing</h2>
+        </div>
+      </div>  
+
+    <div class="guideline-steps">
+        <p class="step">Guildline Steps</p>
+        <ul>
+            <p>1. Go to Upload Image Page</p>
+            <p>2. Upload your image and enter your name</p>
+            <p>3. Click to upload (Waiting for a minute)</p>
+            <p>4. Check your generated Portrait image (If generated picture isn't good enough you can re-upload again) </p>
+            <p>5. Click at "Start Drawing" button for drawing your portrait image</p>
+            <p>6. You can check current drawing process. You will see your input name at drawing or waiting queue</p>
+            <p>7. You can watch your drawing progress at Video Streaming page</p>
+        </ul>
+    </div>
+
     <a href="/upload">Upload Image</a>
 </body>
 </html>

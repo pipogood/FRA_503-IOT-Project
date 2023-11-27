@@ -1,18 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check</title>
+    <link rel="stylesheet" href="../try.css" />
+</head>
 
 <body>
-    <h1>Checking your portrait image before drawing</h1>
-    <hr>
-    <% Object.values(showImage).forEach(function(item){%>
-        <p>=> <%= item.name %></p>
-        <img src="<%= item.image %>">
+    <div class="header">
+        <div class="logo">
+          <div class="header__back">
+            <i class="fas fa-angle-left"></i>
+          </div>
+          <h2>Checking your portrait Step</h2>
+        </div>
+      </div>  
+    
+    <div class="guideline-steps">
+        <p class="step">Checking your portrait image before drawing</p>
         <hr>
-    <% }) %>
-    <b>If generated picture isn't good enough please re-upload again</b>
-    <a href="/upload">Re-Upload</a>
-    <hr>
-    <b>If generated picture is OK please click to start drawing process</b>
-    <a href="/status">Start Drawing!!!!</a>
+        <% Object.values(showImage).forEach(function(item){%>
+            <p>=> <%= item.name %></p>
+            <img src="<%= item.image %>">
+            <hr>
+        <% }) %>
+        <b>If generated picture isn't good enough please re-upload again</b>
+        <a href="/upload" class="upload-button">Re-Upload</a>
+        <b>If generated picture is OK please click to start drawing process</b>
+        <a href= <%= link %> >Start Drawing!!!</a>
+    </div>
+    
 </body>
 </html>
