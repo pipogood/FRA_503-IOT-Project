@@ -10,7 +10,7 @@ array_to_ur = np.loadtxt('C:\\git\\FRA_503-IOT\\Nodejs\\Processed_image\\'+sys.a
 # array_to_ur = np.loadtxt('C:\\git\\FRA_503-IOT\\Nodejs\\Processed_image\\pipogoodur_array.txt')
 
 rtde_c = rtde_control.RTDEControlInterface("192.168.20.35")
-z_axis = 0.201 #small magic pen
+z_axis = 0.199 #small magic pen
 home_pose = [-0.129, 0.3, 0.252, 3.151, 0, 0]
 rtde_c.moveJ_IK(home_pose, 0.5, 0.3)
 step = 1
