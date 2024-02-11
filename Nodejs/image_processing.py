@@ -14,9 +14,11 @@ from matplotlib import pyplot
 from numpy.random import randint
 import numpy as np
 import sys
+import time
 from yoloface import face_analysis
 face=face_analysis() 
-print("Python RUN!!!!!")
+
+print('Python Start!!!!')
 
 ###########Step 1 Face detection and resize###############
 
@@ -53,8 +55,8 @@ dataB_all = load_images('C:\\git\\FRA_503-IOT\\Nodejs\\Processed_image\\'+sys.ar
 B_data = (dataB_all - 127.5) / 127.5
 
 cust = {'InstanceNormalization': InstanceNormalization}
-model_AtoB = load_model('C:\\git\\FRA_503-IOT\\g_model_AtoB_003400.h5', cust)
-model_BtoA = load_model('C:\\git\\FRA_503-IOT\\g_model_BtoA_003400.h5', cust)
+model_AtoB = load_model('C:\\git\\FRA_503-IOT\\g_model_AtoB_003400.h5', custom_objects = cust ,compile=False)
+model_BtoA = load_model('C:\\git\\FRA_503-IOT\\g_model_BtoA_003400.h5', custom_objects = cust ,compile=False)
 
 B_real = select_sample(B_data)
 A_generated  = model_BtoA.predict(B_real)
@@ -98,4 +100,4 @@ array_to_ur[:,2] = points[:,2]
 
 np.savetxt('C:\\git\\FRA_503-IOT\\Nodejs\\Processed_image\\'+sys.argv[1]+'ur_array.txt', array_to_ur)
 
-print("Writing Image Finish")
+print(999)

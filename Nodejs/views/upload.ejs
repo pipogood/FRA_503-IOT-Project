@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Upload</title>
-    <link rel="stylesheet" href="try.css" />
+    <link rel="stylesheet" href="../try.css" />
+    <script src="/socket.io/socket.io.js"></script>
 </head>
 
 <body>
@@ -28,8 +29,17 @@
             <input type="file" name="file" accept="image/jpeg, image/png" required>
             <input type="submit" value="Upload">
             <hr>
+            <script>
+              // Connect to the server using Socket.IO
+              const socket = io();
+              // Listen for the 'popup' event from the server
+              socket.on('popup', function(message) {
+                  alert(message); // Display the received message as a popup
+              });
+          </script>
         </form>
     </div>
+
 
     <a href="/" class="guideline-button">Back to Guildline</a>
     <a href="/status" class="status-button">Check Status</a>

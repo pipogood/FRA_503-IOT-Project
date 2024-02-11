@@ -33,5 +33,17 @@
     </div>
     <a href="/upload">Back to Upload</a>
 
+    <script>
+      var socket = io();
+
+      socket.on('statusUpdate', function(data) {
+          // Update your UI using the data received from the server
+          console.log('Received status update:', data);
+          // Example: Update the user_done variable in your UI
+          document.getElementById('user_done').innerText = data.user_done;
+          document.getElementById('all_users').innerText = data.all_users;
+      });
+    </script>
+
 </body>
 </html>

@@ -22,6 +22,7 @@ let save_name = ''
 let all_users = []
 let user_done = 0
 let already_in = 0
+
 //Set nulter for store file
 const storage = multer.diskStorage({
     destination: './uploads',
@@ -57,12 +58,12 @@ app.get("/", (req,res)=>{
 app.get("/get_drawing/:input_name", (req,res)=>{
     const get_name = req.params.input_name 
     console.log("append_drawing",get_name)
-    all_users.push(get_name)
+    all_users.push(get_name) //Add new user to array
     res.redirect('/status')
 });
 
 app.get('/upload', (req, res) => {
-    res.render('upload');
+    res.render('upload')
 });
 
 app.get('/status', (req, res) => {
@@ -86,7 +87,7 @@ app.get('/status', (req, res) => {
 var user_count = 0
 app.get("/stream_all", (req, res) => {
     console.log("render== ", user_count)
-    res.render("index", { roomId: req.params.room, count: user_count});
+    res.render("steam", { roomId: req.params.room, count: user_count});
   });
 
 // Handle file uploads
@@ -101,20 +102,25 @@ app.post('/upload_process', upload.single('file'), (req, res) => {
         console.log('Uploaded file:', req.file);        
         var spawn = require("child_process").spawn;
         var process = spawn('python', ["./image_processing.py", input_name, save_name]);
-        var count = 0
         process.stdout.on('data',function(data){
-            count = count + 1
-            console.log(count, data.toString())
-            if (count === 5){
-            res.redirect('/show'+'/'+input_name)}
+            console.log(parseInt(data), data.toString())
         })
+        process.on('exit', function(code) {
+            console.log('Image process exited with code ' + code)
+            if (code == 0){
+                res.redirect('/show'+'/'+input_name)}
+            else{
+                res.status(400).send('Sorry, Cannot Detect human face please go back and re-upload again');
+            }
+        });
     }
 });
 
 //IO connection
 io.on("connection", (socket) => {
     socket.on("join-room", (roomId, userId, count) => {
-      console.log("Count", count)
+      console.log("Count", count , roomId)
+      console.log("User Id", userId)
       socket.join(roomId);
       setTimeout(()=>{
         socket.to(roomId).emit("user-connected", userId);
@@ -126,4 +132,5 @@ io.on("connection", (socket) => {
 const port = 3000;
 httpsServer.listen(port, () => {
     console.log(`Server listening at https://localhost:${port}`);
+    console.log(`Client listening at https://100.83.248.76:${port}`)
 });
