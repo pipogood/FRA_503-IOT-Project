@@ -22,7 +22,7 @@ showChat.addEventListener("click", () => {
 // const user = prompt("Enter your name");
 
 var peer = new Peer({  //make us enable to use webRTC
-  host: '127.0.0.1',
+  host: '100.83.248.76',
   port: 3000,
   path: '/peerjs',
   config: {

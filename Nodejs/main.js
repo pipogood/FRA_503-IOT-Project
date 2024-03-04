@@ -22,6 +22,7 @@ let save_name = ''
 let all_users = []
 let user_done = 0
 let already_in = 0
+let all_choose_pic = []
 
 //Set nulter for store file
 const storage = multer.diskStorage({
@@ -45,20 +46,35 @@ app.use(express.static(path.join(__dirname,'Processed_image')));
 //get URL
 app.get('/show/:input_name', (req,res)=>{
     const get_name = req.params.input_name 
-    const showImage = [{name:"Input Image of "+get_name ,image: '../'+get_name+'step1.png'},
-    {name:"Generated Protrait Drawing of "+get_name,image: '../'+get_name+'step2.png'},
-    {name:"Line Extraction for Drawing of "+get_name,image: '../'+get_name+"step4.png"}]
-    res.render('check', {showImage:showImage, link:"/get_drawing"+"/"+get_name})
+    const showImage1 = [{name:"Input Image of "+get_name ,image: '../'+get_name+'step1.png'},
+    {name:"Generated Protrait Drawing of "+get_name,image: '../'+get_name+'GAN'+'step2.png'},
+    {name:"Line Extraction for Drawing of "+get_name,image: '../'+get_name+'GAN'+"step4.png"}]
+
+    const showImage2 = [{name:"Generated Protrait Drawing of "+get_name,image: '../'+get_name+'CV'+'step2.png'},
+    {name:"Line Extraction for Drawing of "+get_name,image: '../'+get_name+'CV'+"step4.png"}]
+
+    res.render('check', {showImage1:showImage1,showImage2:showImage2, link1:"/get_drawing_GAN"+"/"+get_name, link2:"/get_drawing_CV"+"/"+get_name})
 })
 
 app.get("/", (req,res)=>{
     res.render('home');
 });
 
-app.get("/get_drawing/:input_name", (req,res)=>{
+app.get("/get_drawing_GAN/:input_name", (req,res)=>{
+    choose_pic = 'GAN'
     const get_name = req.params.input_name 
-    console.log("append_drawing",get_name)
+    console.log("append_drawing_with_GAN!!!!: ",get_name)
     all_users.push(get_name) //Add new user to array
+    all_choose_pic.push(choose_pic)
+    res.redirect('/status')
+});
+
+app.get("/get_drawing_CV/:input_name", (req,res)=>{
+    choose_pic = 'CV'
+    const get_name = req.params.input_name 
+    console.log("append_drawing_with_CV!!!!: ",get_name)
+    all_users.push(get_name) //Add new user to array
+    all_choose_pic.push(choose_pic)
     res.redirect('/status')
 });
 
@@ -70,9 +86,9 @@ app.get('/status', (req, res) => {
     res.render('status', {all_users:all_users, user_done:user_done});
     if (all_users.length > user_done & already_in == 0){
         already_in = 1
-        console.log("Run UR of user: ", all_users[user_done])
+        console.log("Run UR of user: ", all_users[user_done], all_choose_pic[user_done])
         var spawn = require("child_process").spawn;
-        var process = spawn('python', ["./run_ur.py", all_users[user_done]]);
+        var process = spawn('python', ["./run_ur.py", all_users[user_done], all_choose_pic[user_done]]);
         process.stdout.on('data',function(data){
             console.log(data.toString())
         })
