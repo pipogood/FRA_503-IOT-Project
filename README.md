@@ -14,4 +14,9 @@ This project is a part of the undergraduate course FRA503-IOT with concept comma
 
 3. Train CycleGAN: Located in CycleGAN_Tutorial.ipynb, I followed the architecture outlined in this tutorial: [DigitalSreeni CycleGAN Tutorial](https://www.youtube.com/watch?v=VzIO5_R9XEM&ab_channel=DigitalSreeni).
 
-4. Robot Arm Control: Located in Nodejs/run_ur.py, this file receives points extracted from image_processing.py, converts them to the robotics frame, and sets the robot's position
+4. Robot Arm Control: Located in Nodejs/run_ur.py, this file receives points extracted from image_processing.py, converts them to the robotics frame, and sets the robot's position.
+
+
+**Reference Paper**
+https://www.mdpi.com/1424-8220/23/12/5589
+
