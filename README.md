@@ -1,6 +1,6 @@
 # Teleoperation of Portrait Drawing with Robot Arm
 
-This project is a part of the undergraduate course FRA503-IOT with concept command robot drawings from everywhere.
+This project is a part of the undergraduate course FRA503-IOT with concept command robot drawings from everywhere. More detail https://suparach3.wordpress.com/blog-3/ 
 
 ![Project Screenshot](Nodejs/Processed_image/guildline8.png)
 
