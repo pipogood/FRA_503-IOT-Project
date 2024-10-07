@@ -18,6 +18,7 @@ This project is a part of the undergraduate course FRA503-IOT with concept comma
 
 
 **Reference Paper**
-https://www.mdpi.com/1424-8220/23/12/5589
+
+Nasrat, S.; Kang, T.; Park, J.; Kim, J.; Yi, S.-J. Artistic Robotic Arm: Drawing Portraits on Physical Canvas under 80 Seconds. Sensors 2023, 23, 5589. https://doi.org/10.3390/s23125589
 
 
